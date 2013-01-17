@@ -5,6 +5,8 @@ gem 'rails', '3.2.3'
 gem 'mongoid'
 gem 'bson_ext'
 
+gem 'twilio-ruby'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
