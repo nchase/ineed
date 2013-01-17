@@ -35,6 +35,11 @@ a {
 			font-size: 6em;
 			font-family: 'Streetscript', sans-serif;
 			text-shadow: 0 2px hsl(120, 70%, 35%);
+
+
+			a:hover {
+				text-decoration: none;
+			}
 		}
 	}
 }
