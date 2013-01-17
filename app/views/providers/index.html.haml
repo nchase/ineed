@@ -1,6 +1,7 @@
 - @providers.each do |provider|
   .provider
-    %h3= provider.name
+    %h3
+      = link_to provider.name, provider_path(provider)
     %ul
       %li
         email: 

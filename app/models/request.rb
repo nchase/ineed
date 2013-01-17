@@ -8,5 +8,4 @@ class Request
 
   belongs_to :requester
   has_many :responses
-
 end

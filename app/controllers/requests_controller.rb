@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
   def new
     @request = Request.new
-	@requesters = Requester.all
+    @requesters = Requester.all
   end
 
   def create
