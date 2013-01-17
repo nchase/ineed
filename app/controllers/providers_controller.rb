@@ -8,6 +8,16 @@ class ProvidersController < ApplicationController
     redirect_to @provider
   end
 
+  def edit
+    @provider = Provider.find params[:id]
+  end
+
+  def update
+    @provider = Provider.update params[:provider]
+
+    redirect_to @provider
+  end
+
   def show
     @provider = Provider.find params[:id]
   end
