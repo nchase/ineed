@@ -1,0 +1,13 @@
+%h2 New Provider:
+
+=form_for @provider do |f|
+    =f.label :name, 'Name'
+    =f.text_field :name
+
+    =f.label :name, 'Email Address'
+    =f.text_field :email
+
+    =f.label :name, 'Phone Number'
+    =f.text_field :phone
+
+    =f.submit 'List me!'
