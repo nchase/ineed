@@ -29,6 +29,11 @@ a {
 	width: 960px;
 
 	header {
+    .logo,
+    nav {
+      display: inline-block;
+    }
+
 		.logo {
 			margin: 0;
 			padding: 0.1em 0;
@@ -41,6 +46,44 @@ a {
 				text-decoration: none;
 			}
 		}
+
+    nav {
+      margin-left: 1.8em;
+
+      li {
+        padding: 4px 10px;
+      }
+
+      > ul > li {
+        padding: 10px;
+      }
+
+      > ul > li,
+      li > ul {
+        border-radius: 5px;
+        box-shadow: inset 0 1px 10px #000;
+        background: #20213a;
+      }
+
+      ul > li {
+        display: inline-block;
+        position: relative;
+      }
+      ul ul {
+        display: none;
+        position: absolute;
+        top: 36px;
+        left: 0;
+
+        li, li a {
+          white-space: nowrap;
+        }
+      }
+
+      ul > li:hover ul {
+        display: block;
+      }
+    }
 	}
 }
 
