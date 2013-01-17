@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 
-gem 'mongo_mapper'
+gem 'mongoid'
 gem 'bson_ext'
 
 # Bundle edge Rails instead:
