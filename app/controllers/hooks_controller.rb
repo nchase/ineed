@@ -1,11 +1,10 @@
 class HooksController < ApplicationController
   def call
-    puts params.inspect
     requester = Requester.find_or_create_by(name: 'User', phone: params['Caller'])
     c = Call.create call_sid: params['CallSid'], from: requester.phone, requester: requester
     response = Twilio::TwiML::Response.new do |r|
       r.Say 'What do you need?', voice: 'woman'
-      r.Record timeout: 4, transcribe: true, transcribeCallback: "http://ineedvp.heroku.com/call/transcribed?requester_id=#{requester.id}&call_id=#{c.id}", action: "http://ineedvp.heroku.com/call/after_record"
+      r.Record timeout: 4, transcribe: true, playBeep: false, transcribeCallback: "http://ineedvp.heroku.com/call/transcribed", action: "http://ineedvp.heroku.com/call/after_record"
     end
 
     render text: response.text
@@ -32,7 +31,10 @@ class HooksController < ApplicationController
 
     puts "Transcribed: #{text}"
     requester = Requester.find params['requester_id']
-    Request.create requester: requester, text: text, allow_callback: true, expires_at: 5.minutes.from_now, job_date: 2.hours.from_now
+    c = Call.where(call_sid: params['CallSid']).first
+    request = Request.create requester: c.requester, text: text, allow_callback: true, expires_at: 5.minutes.from_now, job_date: 2.hours.from_now
+
+    render :nothing
   end
 
   def sms
