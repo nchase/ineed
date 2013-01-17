@@ -1,7 +1,7 @@
 class HooksController < ApplicationController
   def call
     puts params.inspect
-    requester = Requester.find_or_create_by(name: 'User', phone: params['Caller'][2..-1])
+    requester = Requester.find_or_create_by(name: 'User', phone: params['Caller'])
     c = Call.create call_sid: params['CallSid'], from: requester.phone, requester: requester
     response = Twilio::TwiML::Response.new do |r|
       r.Say 'What do you need?', voice: 'woman'
