@@ -30,3 +30,7 @@ end
 
 gem 'jquery-rails'
 gem 'haml-rails'
+
+group :development, :test do
+  gem 'debugger'
+end
