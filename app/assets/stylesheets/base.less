@@ -14,6 +14,15 @@ body {
 	color: #fff;
 }
 
+a {
+	text-decoration: none;
+	color: inherit;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
 .wrap {
 	margin: 0 auto;
 	width: 960px;
@@ -30,3 +39,42 @@ body {
 }
 
 
+form {
+	padding: 10px;
+	width: 500px;
+	background: #aaa;
+
+	input[type="text"],
+	textarea {
+		&::-webkit-input-placeholder {
+			color: #222;
+		}
+
+		background: #fff;
+		font-size: 1.5em;
+
+
+		width: 490px;
+		resize: vertical;
+	}
+
+	label {
+		display: block;
+	}
+
+	input[type="submit"] {
+		padding: 15px 10px;
+		color: #fff;
+		background-color: hsl(120, 70%, 45%);
+		border: none;
+		border-top: 1px solid hsl(120, 100%, 45%);
+		border-radius: 5px;
+		font-family: 'Streetscript';
+		font-size: 2em;
+		text-shadow: 0 1px #555;
+
+		&:active {
+			border-top-color: hsla(0, 0%, 50%, 1);
+		}
+	}
+}

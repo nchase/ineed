@@ -1,1 +1,24 @@
-%form
+%h2 Make A Request:
+%form{:action => '#request'}
+  %textarea{:placeholder => 'I Need...'}
+
+  %label
+    I Need This By:
+    %input{:type => 'date'}
+
+
+  %label
+    Job Date:
+    %input{:type => 'date'}
+
+  %label
+    %input{:type => 'checkbox'}
+    I Would Like To Receive Calls
+
+  %input{:type => "submit", :value => "Submit Request"}
+
+%hr
+%h2 Respond To A Request:
+%a{:href => '#'} >> See Request <<
+%form{:action => '#respond'}
+  %input{:type => "submit", :value => "Submit Response"}
