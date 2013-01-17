@@ -18,4 +18,8 @@ class ProvidersController < ApplicationController
     )
     @provider.real_phone
   end
+
+  def index
+    @providers = Provider.all
+  end
 end

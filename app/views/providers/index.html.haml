@@ -1,0 +1,13 @@
+- @providers.each do |provider|
+  .provider
+    %h3= provider.name
+    %ul
+      %li
+        email: 
+        = provider.email
+      %li
+        phone number: 
+        = provider.phone
+      %li
+        description: 
+        = provider.description
