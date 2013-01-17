@@ -5,6 +5,8 @@ gem 'rails', '3.2.3'
 gem 'mongoid'
 gem 'bson_ext'
 
+gem 'thin'
+
 gem 'twilio-ruby'
 
 # Bundle edge Rails instead:
