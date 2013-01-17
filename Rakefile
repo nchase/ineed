@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Sbidy::Application.load_tasks
+Ineed::Application.load_tasks

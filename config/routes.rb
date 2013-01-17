@@ -1,3 +1,3 @@
-Sbidy::Application.routes.draw do
+Ineed::Application.routes.draw do
 	match '/' => 'public#index'
 end
