@@ -8,7 +8,7 @@ class HooksController < ApplicationController
       r.Record timeout: 4, transcribe: true, transcribeCallback: "http://ineedvp.heroku.com/call/transcribed?requester_id=#{requester.id}&call_id=#{c.id}", action: "http://ineedvp.heroku.com/call/after_record"
     end
 
-    render text: response
+    render text: response.text
   end
 
   def after_record
@@ -17,7 +17,7 @@ class HooksController < ApplicationController
       r.Hangup
     end
 
-    render text: response
+    render text: response.text
   end
 
   def transcribed
