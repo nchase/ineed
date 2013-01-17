@@ -3,4 +3,5 @@ Ineed::Application.routes.draw do
 	match '/layout' => 'public#layout'
 
   resources :providers
+  resources :requests
 end

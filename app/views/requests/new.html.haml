@@ -1,0 +1,15 @@
+%h2 New Request:
+
+=form_for @request do |f|
+    =f.label :text, 'Request'
+    =f.text_field :text
+
+    =f.label :job_date, 'Job Date'
+    =f.datetime_select :job_date
+
+    %br
+    =f.check_box :allow_callback
+    I would like to receive calls
+
+    %br
+    =f.submit 'Submit Request'
