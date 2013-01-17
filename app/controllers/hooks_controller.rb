@@ -1,5 +1,7 @@
 class HooksController < ApplicationController
   def call
+    puts params.inspect
+    Rails.logger params.inspect
     requester = Requester.find_or_create_by(name: 'User', phone: params['From'][2..-1])
     c = Call.create call_sid: params['CallSid'], from: requester.phone, requester: requester
     response = Twilio::TwiML::Response.new do |r|
@@ -29,6 +31,7 @@ class HooksController < ApplicationController
 
     params['call_id']
 
+    puts "Transcribed: #{text}"
     requester = Requester.find params['requester_id']
     Request.create requester: requester, text: text, allow_callback: true, expires_at: 5.minutes.from_now, job_date: 2.hours.from_now
   end
