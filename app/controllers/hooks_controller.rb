@@ -30,7 +30,6 @@ class HooksController < ApplicationController
     params['call_id']
 
     puts "Transcribed: #{text}"
-    requester = Requester.find params['requester_id']
 
     c = Call.where(call_sid: params['CallSid']).first
     text = twilio_client.account.calls.get(c.call_sid).recordings.list[0].transcriptions.list[0].transcription_text
