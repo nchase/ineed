@@ -5,5 +5,5 @@ class Call
   field :from, type: String
   field :transcription_sid, type: String
 
-  has_one :requester
+  belongs_to :requester
 end

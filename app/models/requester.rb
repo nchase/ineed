@@ -6,6 +6,7 @@ class Requester
   field :phone_number, type: String
 
   has_many :requests
+  has_one :call
 
 
   def real_phone
