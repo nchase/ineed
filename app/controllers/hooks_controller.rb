@@ -31,7 +31,9 @@ class HooksController < ApplicationController
 
     puts "Transcribed: #{text}"
     requester = Requester.find params['requester_id']
+
     c = Call.where(call_sid: params['CallSid']).first
+    text = twilio_client.account.calls.get(c.call_sid).recordings.list[0].transcriptions.list[0].transcription_text
     request = Request.create requester: c.requester, text: text, allow_callback: true, expires_at: 5.minutes.from_now, job_date: 2.hours.from_now
 
     render :nothing
