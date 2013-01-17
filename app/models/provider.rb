@@ -16,4 +16,12 @@ class Provider
 
   has_many :responses
 
+
+  def real_phone
+    p = phone
+    p = '1' + p unless p.start_with? '1'
+    p = '+' + p unless p.start_with? '+'
+    p
+  end
+
 end

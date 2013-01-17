@@ -3,8 +3,8 @@ class Request
 
   field :text, type: String
   field :allow_callback, type: Boolean
-  field :job_date, type: Date
-  field :expires_at, type: Date
+  field :job_date, type: DateTime
+  field :expires_at, type: DateTime
 
   belongs_to :requester
   has_many :responses
