@@ -1,0 +1,19 @@
+!!! 5
+%html
+  %head
+    %title
+      = title_helper
+
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+
+    %link{ :rel =>'shortcut icon', :href => '/favicon.ico?1' }
+  %body{:class => action_name}
+    - if flash
+      .flash=flash.notice
+    .wrap.clearfix
+      %header#header
+        %h1.logo
+          = app_title
+
+      = yield
