@@ -1,9 +1,9 @@
 module ApplicationHelper
-	def title_helper
-		"Sbidy: #{controller_name} #{action_name}"
+	def app_title
+		'I Need'
 	end
 
-	def app_title
-		'Spidy'
+	def title_helper
+		"#{app_title}: #{controller_name} #{action_name}"
 	end
 end

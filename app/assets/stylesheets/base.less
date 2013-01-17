@@ -1,0 +1,32 @@
+@import "elements.less";
+@font-face {
+	font-family: 'Streetscript';
+	src: url('fonts/Streetscript.otf');
+}
+html { height: 100%; }
+body { min-height: 100%; }
+
+body {
+	.gradient(#000222, #000222, #343434);
+	font-family: sans-serif;
+	font-size: 14px;
+
+	color: #fff;
+}
+
+.wrap {
+	margin: 0 auto;
+	width: 960px;
+
+	header {
+		.logo {
+			margin: 0;
+			padding: 0.1em 0;
+			font-size: 6em;
+			font-family: 'Streetscript', sans-serif;
+			text-shadow: 0 2px hsl(120, 70%, 35%);
+		}
+	}
+}
+
+
