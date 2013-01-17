@@ -48,14 +48,31 @@ form {
 	input[type="text"],
 	textarea {
 		&::-webkit-input-placeholder {
-			color: #222;
+			color: #ccc;
 		}
 
-		background: #fff;
+		padding: 6px 10px;
+
 		font-size: 1.5em;
 
-
 		width: 490px;
+
+		border: none;
+		outline: none;
+		background: #fff;
+		border-radius: 5px;
+		box-sizing: border-box;
+
+		&:focus {
+			box-shadow: 0 0 10px hsl(120, 70%, 45%);
+
+			@include transition();
+			@include transition-duration(0.2s);
+		}
+	}
+
+	textarea {
+		padding: 5px;
 		resize: vertical;
 	}
 
