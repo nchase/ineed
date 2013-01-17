@@ -4,4 +4,5 @@ Ineed::Application.routes.draw do
 
   resources :providers
   resources :requests
+  resources :requesters
 end

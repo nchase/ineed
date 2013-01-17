@@ -1,0 +1,13 @@
+%h2 New Requester:
+
+=form_for @requester do |f|
+    =f.label :name, 'Name'
+    =f.text_field :name
+
+    =f.label :email, 'Email Address'
+    =f.text_field :email
+
+    =f.label :phone_number, 'Phone Number'
+    =f.text_field :phone_number
+
+    =f.submit 'Register!'
