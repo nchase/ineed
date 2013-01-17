@@ -5,7 +5,7 @@ class HooksController < ApplicationController
     c = Call.create call_sid: params['CallSid'], from: requester.phone, requester: requester
     response = Twilio::TwiML::Response.new do |r|
       r.Say 'What do you need?', voice: 'woman'
-      r.Record timeout: 4, transcribe: true, transcribeCallback: "http://ineedvp.webs.com/transcribed?requester_id=#{requester.id}&call_id=#{call.id}"
+      r.Record timeout: 4, transcribe: true, transcribeCallback: "http://ineedvp.heroku.com/call/transcribed?requester_id=#{requester.id}&call_id=#{call.id}", action: "http://ineedvp.heroku.com/call/after_record"
     end
 
     render text: response
