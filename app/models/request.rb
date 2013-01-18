@@ -10,6 +10,23 @@ class Request
   belongs_to :requester
   has_many :responses
 
+  after_create :create_pending_responses
+
+
+  def create_pending_responses
+    keywords = []
+    text.split(/[^a-z]/i).each do |word|
+      if word.length > 3
+        keywords << word.downcase
+      end
+    end
+
+    providers = Provider.find_by_keywords keywords
+    puts "Creating #{providers.length} responses"
+    providers.each do |p|
+      Response.create request: self, provider: p, status: 'pending'
+    end
+  end
 
   def first_accepted_response
     responses.where(status: 'answered', accepted: true).sort(created_at: 1).first

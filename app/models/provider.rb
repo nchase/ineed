@@ -17,6 +17,10 @@ class Provider
   has_many :responses
 
 
+  def self.find_by_keywords(keywords)
+    Provider.in(specialties: keywords)
+  end
+
   def latest_response
     responses.sort{|x,y| x.created_at <=> y.created_at}.first
   end
