@@ -44,7 +44,7 @@ class Request
   end
 
   def pretty_text
-    "&ldquo" + self.text + "&rdquo;"
+    "&ldquo;" + self.text + "&rdquo;"
   end
 
   def on_new_response(response)
