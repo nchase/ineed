@@ -14,7 +14,7 @@
     .wrap.clearfix
       %header#header
         %h1.logo
-          = link_to app_title, '/'
+          = link_to(raw("#{app_title}<span>...</span>"), '/')
         %nav
           %ul
             %li

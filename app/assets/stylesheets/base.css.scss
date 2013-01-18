@@ -42,9 +42,15 @@ a {
 			text-shadow: 0 2px hsl(120, 70%, 35%);
 
 
-			a:hover {
-				text-decoration: none;
-			}
+      a {
+        &:hover {
+          text-decoration: none;
+        }
+        span {
+          margin-left: 0.1em;
+          letter-spacing: 0.1em;
+        }
+      }
 		}
 
     nav {
