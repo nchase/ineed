@@ -45,7 +45,7 @@ class HooksController < ApplicationController
     params['To']
     body = params['Body']
 
-    provider = Provider.where(phone: from) rescue nil
+    provider = Provider.where(phone: from).first rescue nil
     unless provider.nil?
       response = provider.responses.sort(created_at: -1).first
       if response.nil?
@@ -55,7 +55,7 @@ class HooksController < ApplicationController
       end
     end
 
-    requester = Requester.where(phone: from) rescue nil
+    requester = Requester.where(phone: from).first rescue nil
     unless requester.nil?
       if body =~ /call/i
         latest_request = requester.requests.sort(created_at: -1).first
