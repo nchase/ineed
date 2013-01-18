@@ -15,4 +15,7 @@
     = f.label :street_address, 'Address'
     = f.text_field :street_address
 
+    = f.label :description, 'Provider Description'
+    = f.text_area :description, {:size => '40x4', :placeholder => 'Tell your customers a bit about yourself!'}
+
     = f.submit 'Update Listing'
