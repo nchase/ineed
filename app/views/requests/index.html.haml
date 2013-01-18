@@ -1,6 +1,6 @@
 %h2
-  Your requests:
+  Requests:
 %ul    
 -@requests.each do |request|
-  %li
-    =link_to("#{request.text} #{request.expires_at}", request_path(request))
+  %li.request
+    =link_to("\"#{request.text}\" #{request.print_time}", request_path(request))

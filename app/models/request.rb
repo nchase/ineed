@@ -36,6 +36,12 @@ class Request
     "#{text} on #{job_date}"
   end
 
+  def print_time
+    if self.expires_at
+      "- by #{self.expires_at.strftime('%B %d %Y')}"
+    end
+  end
+
   def on_new_response(response)
     fully_collected = false
 
