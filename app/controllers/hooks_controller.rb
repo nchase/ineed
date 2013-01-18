@@ -39,6 +39,43 @@ class HooksController < ApplicationController
   end
 
   def sms
-#    render text: @
+    params['SmsSid']
+    params['AccountSid']
+    from = normalize_phone(params['From'])
+    params['To']
+    body = params['Body']
+
+    provider = Provider.where(phone: from) rescue nil
+    unless provider.nil?
+      response = provider.responses.sort(created_at: -1).first
+      if response.nil?
+        puts "ERROR: No responses for: #{provider}"
+      else
+        response.respond(body =~ /y|yes|yeah|accept/i) if response.status == 'pending'
+      end
+    end
+
+    requester = Requester.where(phone: from) rescue nil
+    unless requester.nil?
+      if body =~ /call/i
+        latest_request = requester.requests.sort(created_at: -1).first
+        earliest_response = request.responses.where(status: 'answered', accepted: true).sort(created_at: 1).first rescue nil
+        if earliest_response
+          requester.send_sms("Auto-dialing is coming soon!")
+        else
+          puts "ERROR: No earliest response for: #{requester.name} (#{from}) - #{latest_request}"
+        end
+      end
+    end
+
+    puts "ERROR: Unrecognized provider: #{from}" if requester.nil? && provider.nil?
+    render :nothing
+  end
+
+
+  private
+
+  def normalize_phone(p)
+    p.sub('+1', '')
   end
 end
