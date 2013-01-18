@@ -1,29 +1,27 @@
-%h2
-  A Friendly Request:
-%ul
-  %li
-    Description: 
-    %br
-    =@request.text
-  - if @request.allow_callback
-    %li
-      = @request.requester.phone_number
-  %li
-    Job Date:
-    %br
-    =@request.job_date.strftime('%B %d %Y')
-  %li
-    Expires At:
-    %br
-    =@request.expires_at.strftime('%B %d %Y')
--if !@request.responses.empty?
+.request
   %h3
-    Interest in your request:
-    %ul
-      -@request.responses.each do |response|
-        -if response.provider
-          %li
-            ="#{response.provider.name} (#{response.status})"
-            %br
-            =response.provider.description
-    
+    = raw @request.pretty_text
+  %ul
+    - if @request.allow_callback
+      %li
+        Phone Number:
+        = @request.requester.phone_number
+    - if @request.job_date
+      %li
+        Job Date:
+        =@request.job_date.strftime('%B %d %Y')
+    - if @request.expires_at
+      %li
+        Expires At:
+        =@request.expires_at.strftime('%B %d %Y')
+  -if !@request.responses.empty?
+    %h3
+      Interest in your request:
+      %ul
+        -@request.responses.each do |response|
+          -if response.provider
+            %li
+              ="#{response.provider.name} (#{response.status})"
+              %br
+              =response.provider.description
+      

@@ -42,6 +42,10 @@ class Request
     end
   end
 
+  def pretty_text
+    "&ldquo;" + self.text + "&rdquo;"
+  end
+
   def on_new_response(response)
     fully_collected = false
 
