@@ -13,7 +13,15 @@ class ProvidersController < ApplicationController
   end
 
   def update
-    @provider = Provider.update params[:provider]
+    @provider = Provider.find params[:id]
+
+    specialties = params[:provider][:specialties].split(',')
+
+    params[:provider].delete(:specialties)
+
+    @provider.update_attributes params[:provider]
+
+    @provider.update_attribute :specialties, specialties
 
     redirect_to @provider
   end

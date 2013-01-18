@@ -14,9 +14,10 @@
       %br
       =@provider.street_address
     %li
-      Specialties
+      Specialties:
       - if @provider.specialties
         %ul
-          - @provider.specialties.each do |specialty|
-            %li=specialty
+        - @provider.specialties.each do |specialty|
+          %li
+            = specialty
 
