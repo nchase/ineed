@@ -13,6 +13,10 @@ class Requester
     requests.sort{|x,y| x.created_at <=> y.created_at}.first
   end
 
+  def phone
+    phone_number
+  end
+
   def real_phone
     p = phone
     p = '1' + p unless p.start_with? '1'
