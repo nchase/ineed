@@ -9,7 +9,8 @@
     = f.text_field :phone
 
     = f.label :specialties, 'Specialties'
-    %input{:type => 'text', :name => 'provider[specialties]', :value => @provider.specialties.to_sentence}
+    - if @provider.specialties
+      %input{:type => 'text', :name => 'provider[specialties]', :value => @provider.list_specialties}
 
     = f.label :street_address, 'Address'
     = f.text_field :street_address

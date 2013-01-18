@@ -40,4 +40,7 @@ class Provider
     )
   end
 
+  def list_specialties
+    self.specialties.to_a.to_sentence
+  end
 end

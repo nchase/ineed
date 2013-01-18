@@ -16,8 +16,4 @@
     %li
       Specialties:
       - if @provider.specialties
-        %ul
-        - @provider.specialties.each do |specialty|
-          %li
-            = specialty
-
+        = @provider.list_specialties
