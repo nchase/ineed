@@ -2,9 +2,6 @@
   %h2
     Requests:
   %ul    
-  -@requests.each do |request|
-    %li
-      =link_to("\"#{request.text}\"", request_path(request))
-      ="--"
-      =time_ago_in_words(request.job_date) rescue 'some time'
-      ago
+    -@requests.each do |request|
+      %li
+        =link_to("\"#{request.text}\" #{request.print_job_date}", request_path(request))

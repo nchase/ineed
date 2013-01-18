@@ -1,6 +1,7 @@
 class Request
   include Mongoid::Document
   include Mongoid::Timestamps
+  include ActionView::Helpers::DateHelper
 
   field :text, type: String
   field :allow_callback, type: Boolean
@@ -36,14 +37,14 @@ class Request
     "#{text} on #{job_date}"
   end
 
-  def print_time
-    if self.expires_at
-      "- by #{self.expires_at.strftime('%B %d %Y')}"
-    end
+  def print_job_date
+    time_ago_in_words(self.job_date) + ' ago'
+  rescue
+    'some time ago'
   end
 
   def pretty_text
-    "&ldquo;" + self.text + "&rdquo;"
+    "&ldquo" + self.text + "&rdquo;"
   end
 
   def on_new_response(response)
