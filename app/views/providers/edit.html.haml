@@ -1,0 +1,17 @@
+.provider
+  %h3= @provider.name
+
+  =form_for @provider, :html => {:style => 'padding-left: 0; background-color: transparent;'} do |f|
+    =f.label :email, 'Email Address'
+    =f.text_field :email
+
+    =f.label :phone, 'Phone Number'
+    =f.text_field :phone
+
+    =f.label :specialties, 'Specialties'
+    =f.text_field :specialties
+
+    =f.label :street_address, 'Address'
+    =f.text_field :street_address
+
+    =f.submit 'Update Listing'

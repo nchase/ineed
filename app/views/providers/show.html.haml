@@ -1,6 +1,7 @@
 .provider
   %h3
     =@provider.name
+    = link_to 'Edit This Provider', edit_provider_path(@provider), {:style => 'float: right'}
   %ul
     %li
       Email: 
