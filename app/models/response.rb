@@ -30,7 +30,7 @@ class Response
       if request.responses.where(status: 'answered', accepted: true).count == 0
         # This is the first answer!
         provider.send_sms("Congrats! You are the first responder! Remember to tell your friends about INeed")
-        request.requester.send_sms("#{provider.name} can help you! Reply 'Call' to call them.")
+        request.requester.send_sms("#{provider.name} can help you! Call: #{provider.number}")
       end
     end
 

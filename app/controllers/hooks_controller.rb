@@ -35,7 +35,7 @@ class HooksController < ApplicationController
     text = twilio_client.account.calls.get(c.call_sid).recordings.list[0].transcriptions.list[0].transcription_text
     request = Request.create requester: c.requester, text: text, allow_callback: true, expires_at: 5.minutes.from_now, job_date: 2.hours.from_now
 
-    render :nothing
+    render nothing: true
   end
 
   def sms
@@ -69,7 +69,7 @@ class HooksController < ApplicationController
     end
 
     puts "ERROR: Unrecognized provider: #{from}" if requester.nil? && provider.nil?
-    render :nothing
+    render nothing: true
   end
 
 
