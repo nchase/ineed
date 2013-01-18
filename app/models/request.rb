@@ -10,6 +10,11 @@ class Request
   belongs_to :requester
   has_many :responses
 
+
+  def first_accepted_response
+    responses.where(status: 'answered', accepted: true).sort(created_at: 1).first
+  end
+
   def to_short_string
     "#{text} on #{job_date}"
   end

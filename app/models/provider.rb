@@ -17,6 +17,10 @@ class Provider
   has_many :responses
 
 
+  def latest_response
+    responses.sort{|x,y| x.created_at <=> y.created_at}.first
+  end
+
   def real_phone
     p = phone
     p = '1' + p unless p.start_with? '1'

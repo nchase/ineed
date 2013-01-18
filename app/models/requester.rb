@@ -9,6 +9,10 @@ class Requester
   has_one :call
 
 
+  def latest_request
+    requests.sort{|x,y| x.created_at <=> y.created_at}.first
+  end
+
   def real_phone
     p = phone
     p = '1' + p unless p.start_with? '1'

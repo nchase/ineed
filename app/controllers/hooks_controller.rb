@@ -47,7 +47,7 @@ class HooksController < ApplicationController
 
     provider = Provider.where(phone: from).first rescue nil
     unless provider.nil?
-      response = provider.responses.sort(created_at: -1).first
+      response = provider.latest_response
       if response.nil?
         puts "ERROR: No responses for: #{provider}"
       else
@@ -58,8 +58,8 @@ class HooksController < ApplicationController
     requester = Requester.where(phone: from).first rescue nil
     unless requester.nil?
       if body =~ /call/i
-        latest_request = requester.requests.sort(created_at: -1).first
-        earliest_response = request.responses.where(status: 'answered', accepted: true).sort(created_at: 1).first rescue nil
+        latest_request = requester.latest_request
+        earliest_response = request.first_accepted_response rescue nil
         if earliest_response
           requester.send_sms("Auto-dialing is coming soon!")
         else
