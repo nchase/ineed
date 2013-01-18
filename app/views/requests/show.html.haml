@@ -16,3 +16,14 @@
     Expires At:
     %br
     =@request.expires_at
+-if !@request.responses.empty?
+  %h3
+    Interest in your request:
+    %ul
+      -@request.responses.each do |response|
+        -if response.provider
+          %li
+            ="#{response.provider.name} (#{response.status})"
+            %br
+            =response.provider.description
+    
