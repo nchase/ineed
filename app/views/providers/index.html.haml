@@ -9,9 +9,11 @@
       %li
         phone number: 
         = provider.phone
-      %li
-        specialties: 
-        = provider.list_specialties
-      %li
-        description: 
-        = provider.description
+      -if provider.specialties
+        %li
+          specialties: 
+          = provider.list_specialties
+      -if provider.description
+        %li
+          description: 
+          = provider.description
